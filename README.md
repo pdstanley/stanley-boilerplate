@@ -3,9 +3,9 @@
 A stanley-llc boilerplate server template generator. Proprietary and of great excellence. #MAGA
 
 Before getting started:
-> create a GitHub repo for the project being deployed on the new server
+> create a GitHub repo for the project to be deployed on the new server
 
-> have that repo's GitHub SSH address handy
+> have the GitHub SSH address handy for that repo
 
 > know your final project name/web domain
 
