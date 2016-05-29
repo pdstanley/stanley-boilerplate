@@ -79,18 +79,21 @@ http {
 
 }";
 # sudo sh -c 'echo "text" >>/file.txt'
-sudo sh -c 'echo "$deployText" > "$deployFile"'
+echo "$deployText" > "deploytemp.sh"
+sudo cp -R "deploytemp.sh" "$deployFile"
 
 nginxText="#!/bin/bash
 cd /var/www/$projectName/ && git reset --hard HEAD && git pull
 echo ’new project version deployed.'";
-sudo sh -c 'echo "$nginxText" > "/etc/nginx/nginx.conf"'
-#sudo echo "$nginxText" > "/etc/nginx/nginx.conf"
+#sudo sh -c 'echo "$nginxText" > "/etc/nginx/nginx.conf"'
+#echo "$nginxText" > "/etc/nginx/nginx.conf"
+echo "$nginxText" > "nginx.conf"
+sudo cp -R "nginx.conf" "/etc/nginx/nginx.conf"
 
 cd "$overallFolder/$projectName"
 
 #install git and create new project
-sudo git clone origin-url . "https://github.com/pdstanley/modernowner.git"
+#sudo git clone origin-url . "https://github.com/pdstanley/modernowner.git"
 # git init
 # git remote add origin "git@github.com:pdstanley/$gitHubRepo.git"
 #
