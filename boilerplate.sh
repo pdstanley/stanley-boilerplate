@@ -92,7 +92,7 @@ echo "$nginxText"| sudo tee "/etc/nginx/nginx.conf"
 #set GitHub deploy webhook script
 deployText="#!/bin/bash
 cd /var/www/$projectName/ && git reset --hard HEAD && git pull
-echo ’new project version deployed.'";
+echo 'new project version deployed.'";
 echo "$deployText"| sudo tee "$deployFile"
 
 #generate ssh key and display
@@ -102,11 +102,12 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
 #read ssh key to console
+echo "\n\n"
 cat ~/.ssh/id_rsa.pub | while read line
 do
   echo "$line"
 done
-read -rsp $'\nCopy the above public key to GitHub webhook deploy and press any key: \n' -n1 key
+read -rsp $'\n\nCopy the above public key to GitHub-Settings-SSH-GPG and press any key: \n' -n1 key
 
 #install git and create new project
 cd "$overallFolder/$projectName"
