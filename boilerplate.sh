@@ -100,8 +100,10 @@ sudo git clone "https://github.com/pdstanley/modernowner.git"
 #git push origin master
 
 #generate ssh key and display
-sudo -Hu ec2-user ssh-keygen -t rsa -N -f ~/.ssh/id_rsa
-cat ~/.ssh/id_rsa/id_rsa.pub | while read line
+# sudo -Hu ec2-user ssh-keygen -t rsa -N -f ~/.ssh/id_rsa
+sudo/ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+
+cat ~/.ssh/id_rsa.pub | while read line
 do
   echo "$line"
 done
