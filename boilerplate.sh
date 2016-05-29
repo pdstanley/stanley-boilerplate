@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#stanley-llc - boilerplate server generator
+#stanley-llc - boilerplate server framework generator
 
 echo "Stanley LLC - Boilerplate Server Generator"
 
@@ -17,7 +17,9 @@ echo -n "Enter full GitHub repo address (already created on GitHub.com) for new 
 read gitHubRepo
 
 #install nginx and nodejs
+echo "INSTALLING NGINX..."
 sudo yum install nginx
+echo "INSTALLING NODEJS..."
 sudo yum install nodejs npm --enablerepo=epel
 
 sudo mkdir /var/www
@@ -27,7 +29,7 @@ sudo mkdir -p "$overallFolder/$projectName";
 sudo mkdir -p "$overallFolder/deploy/$projectName";
 deployFile="$overallFolder/deploy/$projectName/deploy.sh"
 
-deployText="
+nginxText="
 user nginx;
 worker_processes auto;
 error_log /var/log/nginx/error.log;
@@ -78,30 +80,14 @@ http {
   }
 
 }";
-
-echo "$deployText"| sudo tee "$deployFile"
-# sudo cp -R "deploytemp.sh" "$deployFile"
-
-nginxText="#!/bin/bash
-cd /var/www/$projectName/ && git reset --hard HEAD && git pull
-echo ’new project version deployed.'";
-#sudo sh -c 'echo "$nginxText" > "/etc/nginx/nginx.conf"'
-#echo "$nginxText" > "/etc/nginx/nginx.conf"
-# echo "$nginxText" > "nginx.conf"
-# sudo cp -R "nginx.conf" "/etc/nginx/nginx.conf"
 echo "$nginxText"| sudo tee "/etc/nginx/nginx.conf"
 
-cd "$overallFolder/$projectName"
+deployText="#!/bin/bash
+cd /var/www/$projectName/ && git reset --hard HEAD && git pull
+echo ’new project version deployed.'";
+echo "$deployText"| sudo tee "$deployFile"
 
-#install git and create new project
-#sudo git clone origin-url . "https://github.com/pdstanley/modernowner.git"
-# git init
-# git remote add origin "git@github.com:pdstanley/$gitHubRepo.git"
-#
-# git reset --mixed origin/master
-# git add .
-# git commit -m "first commit"
-#git push origin master
+cd "$overallFolder/$projectName"
 
 #generate ssh key and display
 # sudo -Hu ec2-user ssh-keygen -t rsa -N -f ~/.ssh/id_rsa
@@ -111,3 +97,8 @@ cat ~/.ssh/id_rsa.pub | while read line
 do
   echo "$line"
 done
+
+read -rsp $'\nCopy the above public key to GitHub webhook deploy and press any key: \n' -n1 key
+
+#install git and create new project
+sudo git clone git@github.com:pdstanley/stanley-boilerplate.git .
