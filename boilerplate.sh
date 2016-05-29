@@ -79,7 +79,8 @@ http {
 
 }";
 # sudo sh -c 'echo "text" >>/file.txt'
-echo "$deployText" > "deploytemp.sh"
+echo "$deployText"| sudo tee "deploytemp.sh"
+#echo "$deployText" > "deploytemp.sh"
 sudo cp -R "deploytemp.sh" "$deployFile"
 
 nginxText="#!/bin/bash
