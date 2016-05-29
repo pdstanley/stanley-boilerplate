@@ -11,6 +11,8 @@ Before getting started:
 
 > know your aws elastic ip public domain
 
+> copy the HTTPS git clone address for THIS repo and have the GitHub password handy
+
 Once you've done that:
 > cd to desired boilerplate install directory
 

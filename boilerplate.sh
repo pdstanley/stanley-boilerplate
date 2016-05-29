@@ -102,7 +102,7 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
 #read ssh key to console
-echo "\n\n"
+echo $'\n\n'
 cat ~/.ssh/id_rsa.pub | while read line
 do
   echo "$line"
