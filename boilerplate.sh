@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#stanley-llc - boilerplate server framework generator
+#stanley-llc - boilerplate server template generator
 
 #stdin
 echo "Stanley LLC - Boilerplate Server Generator"
