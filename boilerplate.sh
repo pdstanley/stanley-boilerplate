@@ -2,13 +2,6 @@
 
 #stanley-llc - boilerplate server generator
 
-#install nginx and nodejs
-sudo yum install nginx
-sudo yum install nodejs npm --enablerepo=epel
-
-sudo mkdir /var/www
-overallFolder="/var/www"
-
 echo "Stanley LLC - Boilerplate Server Generator"
 
 echo -n "Enter the name of your project: "
@@ -23,10 +16,17 @@ read publicAws
 echo -n "Enter full GitHub repo address (already created on GitHub.com) for new project: "
 read gitHubRepo
 
+#install nginx and nodejs
+sudo yum install nginx
+sudo yum install nodejs npm --enablerepo=epel
+
+sudo mkdir /var/www
+overallFolder="/var/www"
+
 deployFile="$overallFolder/deploy/$projectName/deploy.sh"
 
-mkdir -p "$overallFolder/$projectName";
-mkdir -p "$overallFolder/deploy/$projectName";
+sudo mkdir -p "$overallFolder/$projectName";
+sudo mkdir -p "$overallFolder/deploy/$projectName";
 
 deployText="
 user nginx;
@@ -79,7 +79,7 @@ http {
   }
 
 }";
-echo "$deployText" > "$deployFile"
+sudo echo "$deployText" > "$deployFile"
 
 nginxText="#!/bin/bash
 cd /var/www/$projectName/ && git reset --hard HEAD && git pull
