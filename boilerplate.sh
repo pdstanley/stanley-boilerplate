@@ -90,7 +90,7 @@ echo "$nginxText" > "/etc/nginx/nginx.conf"
 cd "$overallFolder/$projectName"
 
 #install git and create new project
-sudo git clone "https://github.com/pdstanley/modernowner.git"
+sudo git clone origin-url . "https://github.com/pdstanley/modernowner.git"
 # git init
 # git remote add origin "git@github.com:pdstanley/$gitHubRepo.git"
 #
