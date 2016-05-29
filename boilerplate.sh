@@ -78,13 +78,14 @@ http {
   }
 
 }";
-sudo echo "$deployText" > "$deployFile"
+# sudo sh -c 'echo "text" >>/file.txt'
+sudo sh -c 'echo "$deployText" > "$deployFile"'
 
 nginxText="#!/bin/bash
 cd /var/www/$projectName/ && git reset --hard HEAD && git pull
 echo ’new project version deployed.'";
-
-sudo echo "$nginxText" > "/etc/nginx/nginx.conf"
+sudo sh -c 'echo "$nginxText" > "/etc/nginx/nginx.conf"'
+#sudo echo "$nginxText" > "/etc/nginx/nginx.conf"
 
 cd "$overallFolder/$projectName"
 
