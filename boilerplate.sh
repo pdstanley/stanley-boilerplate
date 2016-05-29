@@ -78,18 +78,18 @@ http {
   }
 
 }";
-# sudo sh -c 'echo "text" >>/file.txt'
-echo "$deployText"| sudo tee "deploytemp.sh"
-#echo "$deployText" > "deploytemp.sh"
-sudo cp -R "deploytemp.sh" "$deployFile"
+
+echo "$deployText"| sudo tee "$deployFile"
+# sudo cp -R "deploytemp.sh" "$deployFile"
 
 nginxText="#!/bin/bash
 cd /var/www/$projectName/ && git reset --hard HEAD && git pull
 echo ’new project version deployed.'";
 #sudo sh -c 'echo "$nginxText" > "/etc/nginx/nginx.conf"'
 #echo "$nginxText" > "/etc/nginx/nginx.conf"
-echo "$nginxText" > "nginx.conf"
-sudo cp -R "nginx.conf" "/etc/nginx/nginx.conf"
+# echo "$nginxText" > "nginx.conf"
+# sudo cp -R "nginx.conf" "/etc/nginx/nginx.conf"
+echo "$nginxText"| sudo tee "/etc/nginx/nginx.conf"
 
 cd "$overallFolder/$projectName"
 
