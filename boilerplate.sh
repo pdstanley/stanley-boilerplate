@@ -110,5 +110,5 @@ read -rsp $'\nCopy the above public key to GitHub webhook deploy and press any k
 
 #install git and create new project
 cd "$overallFolder/$projectName"
-sudo chown -R ec2-user:ec2-user "$projectFolder";
-git clone git@github.com:pdstanley/stanley-boilerplate.git .
+sudo chown -R ec2-user:ec2-user "$projectFolder"
+git clone "$gitHubRepo" .
