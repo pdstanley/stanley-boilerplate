@@ -7,7 +7,7 @@ sudo yum install nginx
 sudo yum install nodejs npm --enablerepo=epel
 
 sudo mkdir /var/www
-overallFolder="/var/www/test"
+overallFolder="/var/www"
 
 echo "Stanley LLC - Boilerplate Server Generator"
 
@@ -85,14 +85,12 @@ nginxText="#!/bin/bash
 cd /var/www/$projectName/ && git reset --hard HEAD && git pull
 echo ’new project version deployed.'";
 
-echo "$nginxText" > "$overallFolder/nginx.conf"
+echo "$nginxText" > "/etc/nginx/nginx.conf"
 
-sudo chown -r ec2-user:ec2-user /var/www
 cd "$overallFolder/$projectName"
 
 #install git and create new project
-sudo yum install git
-git clone "https://github.com/pdstanley/modernowner.git"
+sudo git clone "https://github.com/pdstanley/modernowner.git"
 # git init
 # git remote add origin "git@github.com:pdstanley/$gitHubRepo.git"
 #
