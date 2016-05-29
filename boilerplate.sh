@@ -107,7 +107,7 @@ cat ~/.ssh/id_rsa.pub | while read line
 do
   echo "$line"
 done
-read -rsp $'\n\nCopy the above public key to GitHub-Settings-SSH-GPG and press any key: \n' -n1 key
+read -rsp $'\n\nCopy the above public key to "GitHub Account->Settings->SSH-GPG Keys" and press any key: \n' -n1 key
 
 #install git and create new project
 cd "$overallFolder/$projectName"
