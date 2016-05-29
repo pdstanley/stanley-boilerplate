@@ -14,7 +14,7 @@ Before getting started:
 > finally, copy the HTTPS git clone address for THIS repo now and have overall GitHub password handy
 
 Once you've done that:
-> cd to desired boilerplate install directory
+> cd to desired boilerplate bash script install directory
 
 > sudo yum install git
 
