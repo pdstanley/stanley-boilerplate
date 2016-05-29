@@ -100,7 +100,7 @@ sudo git clone origin-url . "https://github.com/pdstanley/modernowner.git"
 
 #generate ssh key and display
 # sudo -Hu ec2-user ssh-keygen -t rsa -N -f ~/.ssh/id_rsa
-sudo/ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+sudo ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 
 cat ~/.ssh/id_rsa.pub | while read line
 do
