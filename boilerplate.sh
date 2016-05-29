@@ -14,7 +14,7 @@ read website
 echo -n "Enter the aws public address you'd like to point to: "
 read publicAws
 
-echo -n "Enter full GitHub repo clone address (already created on GitHub.com) to pull: "
+echo -n "Enter full GitHub SSH repo address (already created on GitHub.com) to clone: "
 read gitHubRepo
 
 #install nginx and nodejs
@@ -30,7 +30,8 @@ sudo git config --global user.email "paul.daniel.stanley@gmail.com"
 #create directories and set folders/files
 sudo mkdir /var/www
 overallFolder="/var/www"
-sudo mkdir -p "$overallFolder/$projectName";
+projectFolder="$overallFolder/$projectName";
+sudo mkdir -p "$projectFolder";
 sudo mkdir -p "$overallFolder/deploy/$projectName";
 deployFile="$overallFolder/deploy/$projectName/deploy.sh"
 
@@ -109,4 +110,5 @@ read -rsp $'\nCopy the above public key to GitHub webhook deploy and press any k
 
 #install git and create new project
 cd "$overallFolder/$projectName"
-sudo git clone git@github.com:pdstanley/stanley-boilerplate.git .
+sudo chown -R ec2-user:ec2-user "$projectFolder";
+git clone git@github.com:pdstanley/stanley-boilerplate.git .
