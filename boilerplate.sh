@@ -23,10 +23,9 @@ sudo yum install nodejs npm --enablerepo=epel
 sudo mkdir /var/www
 overallFolder="/var/www"
 
-deployFile="$overallFolder/deploy/$projectName/deploy.sh"
-
 sudo mkdir -p "$overallFolder/$projectName";
 sudo mkdir -p "$overallFolder/deploy/$projectName";
+deployFile="$overallFolder/deploy/$projectName/deploy.sh"
 
 deployText="
 user nginx;
@@ -85,7 +84,7 @@ nginxText="#!/bin/bash
 cd /var/www/$projectName/ && git reset --hard HEAD && git pull
 echo ’new project version deployed.'";
 
-echo "$nginxText" > "/etc/nginx/nginx.conf"
+sudo echo "$nginxText" > "/etc/nginx/nginx.conf"
 
 cd "$overallFolder/$projectName"
 
